@@ -1,0 +1,10 @@
+{% extends 'erp/base.html' %}
+
+{% block content %}
+    <h4>Welcome</h4>
+    <ul>
+        {% for person in people %}
+            <li>{{ forloop.counter }}. {{ person.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

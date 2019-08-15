@@ -4,5 +4,7 @@ from . import views
 
 app_name = 'erp'
 urlpatterns = [
-    path('', views.index, name='home')
+    path('', views.PersonListView.as_view(), name='person_changelist'),
+    path('add', views.PersonCreateView.as_view(), name='person_add'),
+    path('<int:pk>/', views.PersonUpdateView.as_view(), name='person_change'),
 ]

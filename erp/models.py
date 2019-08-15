@@ -22,3 +22,7 @@ class Person(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     country = models.ForeignKey('erp.Country', on_delete=models.SET_NULL, null=True)
     city = models.ForeignKey('erp.City', on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.name
+
