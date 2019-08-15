@@ -2,6 +2,7 @@
 
 {% block content %}
     <h4>Welcome</h4>
+    <a href="{% url 'erp:person_add' %}">Add Person</a>
     <ul>
         {% for person in people %}
             <li>{{ forloop.counter }}. {{ person.name }}</li>
