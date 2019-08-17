@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>Person</h2>
-    <form method="POST">
+    <form method="POST" id="personForm" data-cities-url="{% url 'erp:ajax_load_cities' %}" novalidate>
         {% csrf_token %}
         <table>
             {{ form.as_table }}
@@ -10,4 +10,22 @@
         <button type="submit">Save</button>
         <a href="{% url 'erp:person_changelist' %}">Never mind</a>
     </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#id_country").change(function () {
+            let url = $("#personForm").attr("data-cities-url");
+            let country_id = $(this).val();
+
+            $.ajax({
+                url: url,
+                data: {
+                    'country': country_id
+                },
+                success: function (data) {
+                    $("#id_city").html(data)
+                }
+            });
+        });
+    </script>
 {% endblock content %}
